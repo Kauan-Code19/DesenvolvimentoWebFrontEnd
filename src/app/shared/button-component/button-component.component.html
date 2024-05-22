@@ -1,0 +1,16 @@
+<div class="col-12">
+    <button type="submit" class="btn btn-secondary btn-lg w-100 text-btn"
+        (click)="submit()"
+        [disabled]="disabled"
+    >
+    
+        @if (isLoginPage()) {
+            {{btnText}}
+        }@else if (isRegisterPage()) {
+            Register
+        }@else {
+            Edit
+        }
+
+    </button>
+</div>
