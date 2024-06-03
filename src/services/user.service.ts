@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.development';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserResponse } from '../interfaces/user/user-response';
 
@@ -22,6 +22,23 @@ export class UserService {
     const url = `${this.endpointUserURL}/all`
 
     return this.http.get<UserResponse[]>(url);
+  }
+
+  getUser(userId: string) : Observable<UserResponse> {
+    const url = `${this.endpointUserURL}/${userId}`;
+
+    return this.http.get<UserResponse>(url);
+  }
+
+  updateUser
+  (
+    userId: string, name: string, email: string, password: string
+  ) : Observable<UserResponse>
+  {
+    const url = `${this.endpointUserURL}/${userId}`;
+    const data = {name, email, password}
+
+    return this.http.put<UserResponse>(url, data);
   }
 
   deleteUser(userId: string) : Observable<any> {
