@@ -17,4 +17,16 @@ export class UserService {
 
     return this.http.post<UserResponse>(this.endpointUserURL, data);
   }
+
+  getAllUsers() : Observable<UserResponse[]> {
+    const url = `${this.endpointUserURL}/all`
+
+    return this.http.get<UserResponse[]>(url);
+  }
+
+  deleteUser(userId: string) : Observable<any> {
+    const url = `${this.endpointUserURL}/${userId}`;
+
+    return this.http.delete<any>(url);
+  }
 }
